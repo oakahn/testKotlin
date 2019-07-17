@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
 
         presenter.mockData()
         setupBuilder()
+
+        showText.text = "superman"
+
+        inputText.setText("happy")
     }
 
     private fun setupBuilder() {
@@ -45,6 +49,6 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
     }
 
     override fun getDataSuccess(model: MainModel) {
-        showText.text = model.firstname
+        showText.text = model.firstName
     }
 }

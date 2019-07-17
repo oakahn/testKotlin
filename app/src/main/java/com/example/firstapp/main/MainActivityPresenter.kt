@@ -13,10 +13,11 @@ class MainActivityPresenter: MainActivityPresenterInterface {
     }
 
     override fun mockData() {
-        var model = MainModel()
-        model.age = "22"
-        model.firstname = "Chayawat"
-        model.lastname = "Suntornrak"
+        var model = MainModel(
+            firstName = "Chayawat",
+            lastName = "Suntornrak",
+            age = "22"
+        )
 
         view.getDataSuccess(model)
     }
