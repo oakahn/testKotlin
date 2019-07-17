@@ -1,10 +1,10 @@
-package com.example.firstapp
+package com.example.firstapp.main
 
-import android.graphics.Color
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.widget.Toast
+import com.example.firstapp.R
+import com.example.firstapp.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface MainActivityInterface {
@@ -13,8 +13,7 @@ interface MainActivityInterface {
 
 class MainActivity : AppCompatActivity(), MainActivityInterface {
 
-    var presenter: MainActivityPresenter = MainActivityPresenter(this)
-//    val builder = AlertDialog.Builder(this@MainActivity)
+    private var presenter: MainActivityPresenter = MainActivityPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,29 +21,12 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
 
         presenter.mockData()
         setupBuilder()
-
-        showText.text = "superman"
-
-        inputText.setText("happy")
     }
 
     private fun setupBuilder() {
         button.setOnClickListener {
-            val builder = AlertDialog.Builder(this@MainActivity)
-
-            builder.setTitle("superman")
-
-            builder.setPositiveButton("YES") { dialog, which ->
-                Toast.makeText(applicationContext, "Ok, we change the app background.", Toast.LENGTH_SHORT).show()
-            }
-
-
-            builder.setNegativeButton("No") { dialog, which ->
-                Toast.makeText(applicationContext, "You are not agree.", Toast.LENGTH_SHORT).show()
-            }
-
-            val dialog: AlertDialog = builder.create()
-            dialog.show()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 
